@@ -7,7 +7,7 @@
     "experimentalDecorators": true,                  /**/
     "strict": true,
     "sourceMap": true,                               /*ссылается на исходный код TS*/
-    "noEmitOnError": true                            /*не будет проводиться компиляция, если есть ошибка в ts*/
+    "noEmitOnError": false                           /* true -не будет проводиться компиляция, если есть ошибка в ts*/
   },
   "exclude": [ "node_modules" ]
 }

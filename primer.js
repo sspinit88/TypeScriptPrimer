@@ -110,4 +110,28 @@ numberItem = newVar;
 console.log(numberItem);
 //----------------------------------------------------------------------------------------------------------------------
 //lesson #7 - Классы
+var User7 = /** @class */ (function () {
+    function User7(name, job) {
+        this.job = job;
+        this.isTeacher = true;
+        this.age = 30;
+        this.name = name;
+        this.job = job;
+    }
+    User7.prototype.getAge = function () {
+        return this.age;
+    };
+    User7.prototype.setTitle = function (title) {
+        console.log(this.isTeacher);
+        this.isTeacher = title;
+        console.log(this.isTeacher);
+    };
+    return User7;
+}());
+var userItem7 = new User7('Егор', 'frontend');
+console.log(userItem7);
+console.log(userItem7.getAge());
+userItem7.setTitle(false);
+//----------------------------------------------------------------------------------------------------------------------
+//lesson #8 - Наследование классов
 //# sourceMappingURL=primer.js.map

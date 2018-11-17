@@ -154,3 +154,46 @@ console.log(numberItem);
 
 //----------------------------------------------------------------------------------------------------------------------
 //lesson #7 - Классы
+
+class User7 {
+    // ts можно определять поля класса
+
+    // public - (по умолчанию) ключевое слово (модификатор), которое говорит что поле будет доступно у экземпляров
+    // класса, его
+    // наследников и у самого класса.
+    // private - поле будет доступно только в классе и более нигде.
+    // protected - говорит, что экземполяр данного класса не может обращаться к переменной, а наследники могут.
+
+    // в/у модификаторы можно использовать и с методами
+
+    // наследование приватных методов и т.п. можно использовать при обращении к ним через публичные методы в классе.
+
+    name: string; // public
+    private isTeacher: boolean = true;
+    protected age: number = 30;
+
+    constructor(name: string, public job: string) {
+        this.name = name;
+        this.job = job;
+
+    }
+
+    getAge(): number {
+        return this.age;
+    }
+
+    public setTitle(title: boolean) {
+        console.log(this.isTeacher);
+        this.isTeacher = title;
+        console.log(this.isTeacher);
+    }
+
+}
+
+const userItem7 = new User7('Егор', 'frontend');
+console.log(userItem7);
+console.log(userItem7.getAge());
+userItem7.setTitle(false);
+
+//----------------------------------------------------------------------------------------------------------------------
+//lesson #8 - Наследование классов
