@@ -1,0 +1,28 @@
+{
+  "name": "TypeScriptPrimer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run tscwatch\" \"npm run lite\" ",
+    "tsc": "tsc",
+    "tscwatch": "tsc -w",
+    "lite": "lite-server",
+    "typings": "typings"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "classlist": "^2.0.0",
+    "core-js": "^2.5.7",
+    "systemjs": "^2.1.1"
+  },
+  "devDependencies": {
+    "concurrently": "^4.0.1",
+    "lite-server": "^2.4.0",
+    "typescript": "^3.1.6",
+    "typings": "^2.1.1"
+  }
+}
