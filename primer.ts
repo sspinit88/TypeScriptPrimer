@@ -112,3 +112,45 @@ console.log(rUser2);
 
 let one: string = '12';
 console.log(one);
+
+//----------------------------------------------------------------------------------------------------------------------
+//lesson #6 - Специальные типы. Enum, never, null
+
+//  Enum - тип для определения различных констант
+enum Job {
+    frontend,
+    backend = 50,
+    disigner = 100,
+    cat
+}
+
+// создаем переменную job с типом Job
+const job: Job = Job.backend;
+console.log(job);
+
+const job0: Job = Job.frontend;
+console.log(job0);
+
+const job2: Job = Job.disigner;
+console.log(job2);
+
+const job3: Job = Job.cat;
+console.log(job3);
+
+// never - для функция, которые не заканчиваются, но и ничего не возвращают
+function throwNewError(err: string): never {
+    throw new Error(err);
+}
+
+// null
+// null и undefined не конфликтуют
+let newVar;
+newVar = null;
+// решение конфликта при передачи числа или null
+let numberItem: number | null = 20;
+numberItem = newVar;
+
+console.log(numberItem);
+
+//----------------------------------------------------------------------------------------------------------------------
+//lesson #7 - Классы
