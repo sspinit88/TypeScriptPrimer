@@ -104,5 +104,11 @@ let user2: User = {
     }
 };
 
-let rUser2 = user2.logJobs();
+let rUser2 = user2.logJobs;
 console.log(rUser2);
+
+//----------------------------------------------------------------------------------------------------------------------
+//lesson #5 - работа с tsconfig.json
+
+let one: string = '12';
+console.log(one);

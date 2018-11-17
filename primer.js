@@ -1,3 +1,4 @@
+"use strict";
 // lesson #1 - объявление переменной и типизация
 // string
 var str = 'str';
@@ -70,5 +71,10 @@ var user2 = {
         return this.jobs;
     }
 };
-var rUser2 = user2.logJobs();
+var rUser2 = user2.logJobs;
 console.log(rUser2);
+//----------------------------------------------------------------------------------------------------------------------
+//lesson #5 - работа с tsconfig.json
+var one = '12';
+console.log(one);
+//# sourceMappingURL=primer.js.map

@@ -1,10 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "target": "es5",                                 /*во что будет компилироваться, можно указать и es6*/
+    "module": "commonjs",                            /*отвечает за формат импорта*/
+    "moduleResolution": "node",                      /**/
+    "emitDecoratorMetadata": true,                   /**/
+    "experimentalDecorators": true,                  /**/
+    "strict": true,
+    "sourceMap": true,                               /*ссылается на исходный код TS*/
+    "noEmitOnError": true                            /*не будет проводиться компиляция, если есть ошибка в ts*/
   },
   "exclude": [ "node_modules" ]
 }
