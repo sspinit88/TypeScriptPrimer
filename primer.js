@@ -9,10 +9,12 @@ var bool = true;
 var unknown = 1;
 var other = 1;
 // console.log('lesson-1: ' + ' ' + typeof str + ' ' + typeof num + ' ' + typeof bool + ' ' + typeof unknown + ' ' + typeof other);
-// lesson #2 - типизация массива
+//----------------------------------------------------------------------------------------------------------------------
+// lesson #2 - Массивы
 var strArr = ['1', '2', '3'], strArr0 = ['1', '2', '3'], numArr = [1, 2, 3], numArr0 = [1, 2, 3], boolArr = [true, false], boolArr0 = [true, false];
 // tuples
 var array = [1, '2', '3'];
+//----------------------------------------------------------------------------------------------------------------------
 // lesson #3 - function
 var myName = 'Kir';
 var myAge = 23;
@@ -50,3 +52,23 @@ function sum(num1, num2) {
 mySum = sum;
 console.log(sum(2, 3));
 console.log(mySum(2, 3));
+var user = {
+    name: 'Mike',
+    age: 25,
+    jobs: ['Кинолог', 'Лётчик'],
+    logName: function () {
+        console.log(this.name);
+    }
+};
+var rUser1 = user.logName();
+console.log(rUser1);
+var user2 = {
+    name: 'Maks',
+    age: 45,
+    jobs: ['Врач', 'Конюх'],
+    logJobs: function () {
+        return this.jobs;
+    }
+};
+var rUser2 = user2.logJobs();
+console.log(rUser2);

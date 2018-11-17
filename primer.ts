@@ -12,8 +12,8 @@ let other: string | number = 1;
 
 // console.log('lesson-1: ' + ' ' + typeof str + ' ' + typeof num + ' ' + typeof bool + ' ' + typeof unknown + ' ' + typeof other);
 
-
-// lesson #2 - типизация массива
+//----------------------------------------------------------------------------------------------------------------------
+// lesson #2 - Массивы
 let strArr: string[] = ['1', '2', '3'],
     strArr0: Array<string> = ['1', '2', '3'],
 
@@ -26,7 +26,7 @@ let strArr: string[] = ['1', '2', '3'],
 // tuples
 let array: [number, string, string] = [1, '2', '3'];
 
-
+//----------------------------------------------------------------------------------------------------------------------
 // lesson #3 - function
 const myName: string = 'Kir';
 const myAge: number = 23;
@@ -76,3 +76,33 @@ mySum = sum;
 
 console.log(sum(2, 3));
 console.log(mySum(2, 3));
+
+//----------------------------------------------------------------------------------------------------------------------
+//lesson #4 - Объекты
+// logName: () => void - говорим ts, что у нас есть функция, которая ничего не принимает в себя и ничего не возвращает
+// создаем переменную для указания типа
+// для обозначения необязательного поля используется '?'
+type User = { name: string, age: number, jobs: string[], logName?: () => void, logJobs?: () => string[] };
+
+let user: { name: string, age: number, jobs: string[], logName: () => void } = {
+    name: 'Mike',
+    age: 25,
+    jobs: ['Кинолог', 'Лётчик'],
+    logName(): void {
+        console.log(this.name);
+    }
+};
+let rUser1 = user.logName();
+console.log(rUser1);
+
+let user2: User = {
+    name: 'Maks',
+    age: 45,
+    jobs: ['Врач', 'Конюх'],
+    logJobs() {
+        return this.jobs;
+    }
+};
+
+let rUser2 = user2.logJobs();
+console.log(rUser2);
