@@ -242,5 +242,57 @@ var User9 = /** @class */ (function () {
 var user9 = new User9();
 console.log(user9);
 //----------------------------------------------------------------------------------------------------------------------
-// lesson #10 -
+// lesson #10 - Общие типы (generic)
+// generic - некое обозначение в общем типе
+function getter(data) {
+    return data;
+}
+console.log(getter(1980).length); // получим undefined
+console.log(getter('год').length); // получим 3
+// T - тип, который передадим
+// этот вариант более универсален, в отчличии от any
+function genericGetter(data) {
+    return data;
+}
+// console.log(genericGetter(1980).length);  // подсветит ошибку, показывая, что нет поля length
+console.log(genericGetter('год').length); // получим 3
+// еще один способ обозначения типа данных в generic:
+// let newGenericFu - создаем переменную;
+// ": <T>(d: T) => T" - указываем тип, где d - принимаемый параметр, (d: T)- типа "T", и возвращаее тип 'T' (=> T).
+// "<T>" - стоящее в самом начале говорит, что это generic типа 'T'
+var newGenericFu = genericGetter;
+console.log(newGenericFu('one').length);
+// работа generic с классом
+// простой класс
+var Multiply = /** @class */ (function () {
+    function Multiply(a, b) {
+        this.a = a;
+        this.b = b;
+    }
+    Multiply.prototype.getRes = function () {
+        return this.a * this.b;
+    };
+    return Multiply;
+}());
+var n = new Multiply(10, 5);
+console.log(n.getRes());
+// generic класс
+// <T extends number> - generic наследуется от типа number
+var Multiply2 = /** @class */ (function () {
+    function Multiply2(a, b) {
+        this.a = a;
+        this.b = b;
+    }
+    Multiply2.prototype.getRes = function () {
+        return +this.a * +this.b;
+    };
+    return Multiply2;
+}());
+var nNum = new Multiply2(10, 3);
+console.log(nNum.getRes());
+// тут класс будет работать не корректно
+// let nStr = new Multiply2(50, 'Краб');
+// console.log(nStr.getRes());
+//----------------------------------------------------------------------------------------------------------------------
+// lesson #11
 //# sourceMappingURL=primer.js.map
