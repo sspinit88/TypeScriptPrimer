@@ -350,5 +350,32 @@ var user111 = new User111('Joe', 20, 'Frontend');
 console.log(user111);
 user111.showHTML();
 //----------------------------------------------------------------------------------------------------------------------
-// lesson #12
+// lesson #12 - Namaspace
+// Namaspace  - позволяет локализировать сущности.
+// создаем Namaspace , по умолчанию namespace Util приватный, для того, что бы сделать пуьличным нужно прописать
+// 'export' для функций внутри
+var Util;
+(function (Util) {
+    function isEmpty(d) {
+        return !d;
+    }
+    Util.isEmpty = isEmpty;
+    function isUndef(d) {
+        return typeof d === 'undefined';
+    }
+    Util.isUndef = isUndef;
+    Util.PI = Math.PI;
+    Util.EXP = Math.E;
+})(Util || (Util = {}));
+var EXP = 'TEST';
+console.log(Util.isEmpty('') + ' - ' + 'isEmpty');
+console.log(Util.isEmpty('1') + ' - ' + 'isEmpty');
+console.log(Util.isUndef('1') + ' - ' + 'isUndef');
+console.log(Util.isUndef('undefined') + ' - ' + 'isUndef');
+console.log(Util.isUndef('null') + ' - ' + 'isUndef');
+console.log(Util.PI);
+console.log(Util.EXP);
+console.log(EXP);
+//----------------------------------------------------------------------------------------------------------------------
+// lesson #13 - Webpack
 //# sourceMappingURL=primer.js.map

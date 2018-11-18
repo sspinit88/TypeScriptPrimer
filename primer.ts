@@ -439,4 +439,39 @@ console.log(user111);
 (<any>user111).showHTML();
 
 //----------------------------------------------------------------------------------------------------------------------
-// lesson #12
+// lesson #12 - Namaspace
+// Namaspace  - позволяет локализировать сущности.
+
+// создаем Namaspace , по умолчанию namespace Util приватный, для того, что бы сделать пуьличным нужно прописать
+// 'export' для функций внутри
+
+
+namespace Util {
+    export function isEmpty(d: any): boolean {
+        return !d;
+    }
+
+    export function isUndef(d: any): boolean {
+        return typeof d === 'undefined';
+    }
+
+    export const PI = Math.PI;
+    export const EXP = Math.E;
+}
+
+const EXP = 'TEST';
+
+console.log(Util.isEmpty('') + ' - ' + 'isEmpty');
+console.log(Util.isEmpty('1') + ' - ' + 'isEmpty');
+
+console.log(Util.isUndef('1') + ' - ' + 'isUndef');
+console.log(Util.isUndef('undefined') + ' - ' + 'isUndef');
+console.log(Util.isUndef('null') + ' - ' + 'isUndef');
+
+console.log(Util.PI);
+console.log(Util.EXP);
+
+console.log(EXP);
+
+//----------------------------------------------------------------------------------------------------------------------
+// lesson #13 - Webpack
