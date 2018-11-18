@@ -381,7 +381,7 @@ class Multiply2<T extends number> {
 
     }
 
-    public getRes(): number{
+    public getRes(): number {
         return +this.a * +this.b;
     }
 }
@@ -395,6 +395,48 @@ console.log(nNum.getRes());
 // console.log(nStr.getRes());
 
 
+//----------------------------------------------------------------------------------------------------------------------
+// lesson #11 - Декораторы
+// Декораторы - спец возможность TS по добавлению методаты для различных классов / функций.
+
+// @decorator - декоратор это просто функция, которая принимает конструктор того класса, который за ней закреплен
+// для закрепления класса за декоратором просто пишим название декоратора перед нужным классом.
+
+function logger(constrFn: Function) {
+    console.log(constrFn);
+}
+
+// функция - обертка для декоратора, которая позволит передавать входящие значения в декоратор
+function shouldLog(flag: boolean): any {
+    return flag ? logger : null;
+}
+
+@shouldLog(true)
+class User11 {
+    constructor(public name: string, public age: number) {
+        console.log('I\'m new user!');
+    }
+}
+
+// ----
+
+function addShowAbility(constructorFu: Function) {
+    constructorFu.prototype.showHTML = function () {
+        const pre = document.createElement('pre');
+        pre.innerHTML = JSON.stringify(this);
+        document.body.appendChild(pre);
+    }
+}
+
+@addShowAbility
+class User111 {
+    constructor(public name: string, public age: number, public job: string) {
+    }
+}
+
+let user111 = new User111('Joe', 20, 'Frontend');
+console.log(user111);
+(<any>user111).showHTML();
 
 //----------------------------------------------------------------------------------------------------------------------
-// lesson #11
+// lesson #12

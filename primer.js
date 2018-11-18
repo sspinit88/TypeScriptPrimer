@@ -12,6 +12,15 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 // lesson #1 - объявление переменной и типизация
 // string
 var str = 'str';
@@ -294,5 +303,52 @@ console.log(nNum.getRes());
 // let nStr = new Multiply2(50, 'Краб');
 // console.log(nStr.getRes());
 //----------------------------------------------------------------------------------------------------------------------
-// lesson #11
+// lesson #11 - Декораторы
+// Декораторы - спец возможность TS по добавлению методаты для различных классов / функций.
+// @decorator - декоратор это просто функция, которая принимает конструктор того класса, который за ней закреплен
+// для закрепления класса за декоратором просто пишим название декоратора перед нужным классом.
+function logger(constrFn) {
+    console.log(constrFn);
+}
+// функция - обертка для декоратора, которая позволит передавать входящие значения в декоратор
+function shouldLog(flag) {
+    return flag ? logger : null;
+}
+var User11 = /** @class */ (function () {
+    function User11(name, age) {
+        this.name = name;
+        this.age = age;
+        console.log('I\'m new user!');
+    }
+    User11 = __decorate([
+        shouldLog(true),
+        __metadata("design:paramtypes", [String, Number])
+    ], User11);
+    return User11;
+}());
+// ----
+function addShowAbility(constructorFu) {
+    constructorFu.prototype.showHTML = function () {
+        var pre = document.createElement('pre');
+        pre.innerHTML = JSON.stringify(this);
+        document.body.appendChild(pre);
+    };
+}
+var User111 = /** @class */ (function () {
+    function User111(name, age, job) {
+        this.name = name;
+        this.age = age;
+        this.job = job;
+    }
+    User111 = __decorate([
+        addShowAbility,
+        __metadata("design:paramtypes", [String, Number, String])
+    ], User111);
+    return User111;
+}());
+var user111 = new User111('Joe', 20, 'Frontend');
+console.log(user111);
+user111.showHTML();
+//----------------------------------------------------------------------------------------------------------------------
+// lesson #12
 //# sourceMappingURL=primer.js.map
