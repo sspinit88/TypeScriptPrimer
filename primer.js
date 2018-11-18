@@ -1,4 +1,17 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // lesson #1 - объявление переменной и типизация
 // string
 var str = 'str';
@@ -134,4 +147,56 @@ console.log(userItem7.getAge());
 userItem7.setTitle(false);
 //----------------------------------------------------------------------------------------------------------------------
 //lesson #8 - Наследование классов
+var User8 = /** @class */ (function () {
+    function User8(name, job) {
+        this.name = name;
+        this.job = job;
+        this.age = 30;
+    }
+    User8.prototype.getAge = function () {
+        return this.age;
+    };
+    return User8;
+}());
+// extends - наследование от класса
+// super - вызывает конструктор родителя
+var WFM = /** @class */ (function (_super) {
+    __extends(WFM, _super);
+    function WFM(job) {
+        var _this = _super.call(this, 'Joe', job) || this;
+        // т.к. age является protected, то мы можем изменять его из наследника
+        _this.age = 35;
+        return _this;
+    }
+    return WFM;
+}(User8));
+var wfm = new WFM('Frontend');
+console.log(wfm);
+// getAge() - публичный и мы его можем наследовать
+console.log(wfm.getAge());
+// abstract - создает абстрактный класс / метод, от которого нельзя сделать экземпляр объекта, но от которого можно
+// наследовать
+var Car = /** @class */ (function () {
+    function Car() {
+        this.year = 2010;
+    }
+    Car.prototype.getCarYear = function () {
+        return this.year;
+    };
+    return Car;
+}());
+var Mersedes = /** @class */ (function (_super) {
+    __extends(Mersedes, _super);
+    function Mersedes() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Mersedes.prototype.logInfo = function (info) {
+        console.log(info);
+    };
+    return Mersedes;
+}(Car));
+var car = new Mersedes();
+console.log(car);
+car.logInfo('Info#1');
+console.log(car.getCarYear());
 //# sourceMappingURL=primer.js.map

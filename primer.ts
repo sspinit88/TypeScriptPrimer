@@ -197,3 +197,61 @@ userItem7.setTitle(false);
 
 //----------------------------------------------------------------------------------------------------------------------
 //lesson #8 - Наследование классов
+
+class User8 {
+    protected age: number = 30;
+
+    constructor(public name: string, public job: string) {
+
+    }
+
+    public getAge(): number {
+        return this.age;
+    }
+
+}
+
+// extends - наследование от класса
+// super - вызывает конструктор родителя
+
+class WFM extends User8 {
+
+    constructor(job: string) {
+        super('Joe', job);
+        // т.к. age является protected, то мы можем изменять его из наследника
+        this.age = 35;
+    }
+}
+
+const wfm = new WFM('Frontend');
+console.log(wfm);
+// getAge() - публичный и мы его можем наследовать
+console.log(wfm.getAge());
+
+// abstract - создает абстрактный класс / метод, от которого нельзя сделать экземпляр объекта, но от которого можно
+// наследовать
+
+abstract class Car {
+    year: number = 2010;
+
+    getCarYear(): number {
+        return this.year;
+    }
+
+    // метод абстрактный, по этой причине не имеет тела функции.
+    // описывается только то, как он будет выглядеть.
+
+    abstract logInfo(info: string): void;
+
+}
+
+class Mersedes extends Car {
+    logInfo(info: string): void {
+        console.log(info);
+    }
+}
+
+const car = new Mersedes();
+console.log(car);
+car.logInfo('Info#1');
+console.log(car.getCarYear());
