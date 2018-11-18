@@ -255,3 +255,80 @@ const car = new Mersedes();
 console.log(car);
 car.logInfo('Info#1');
 console.log(car.getCarYear());
+
+//----------------------------------------------------------------------------------------------------------------------
+// lesson #9 - Интерфейсы
+// в интерфейсе перечисляются обязательные и необязательные поля, после этого передаем их как типы
+
+function getLength(variable: { length: number }): void {
+    console.log('getLength:' + ' ' + variable.length);
+}
+
+getLength([1, 2, 3, 5, 7]);
+
+const box = {
+    name: 'Joe',
+    // getLength() выдаст значение из box.length
+    // length: 20
+
+    // getLength() выдаст значение undefined, так как нет поля length у объекта
+    // boxLength: 21
+
+    // для того что бы избежать этой проблемы в функции указываем, что она должна принимать -> getLength(variable: { length: number })
+    length: 25
+};
+// выдаст значение из box.length
+getLength(box);
+
+// создание интерфейса
+// в интерфейсе перечисляются обязательные и необязательные поля, после этого передаем их как типы
+interface ILength {
+    length: number;
+
+}
+
+function getLength2(variable: ILength): void {
+    console.log('getLength:' + ' ' + variable.length);
+}
+
+
+const box2 = {
+    name: 'Joe',
+    length: 65,
+};
+
+getLength(box2);
+
+// также можно создавать интерфейсы классов
+
+interface IUser {
+    name: string;
+    age?: number;
+
+    logInfo(info: string): void;
+}
+
+interface IGetYear {
+    getYear(): number;
+}
+
+// имплементироваться можно сразу от нескольких классов
+// наследоваться только от одного класса
+class User9 implements IUser, IGetYear {
+    name: string = 'user';
+
+    logInfo(info: string): void {
+        console.log(info);
+    }
+
+    getYear(): number {
+        return 200;
+    }
+}
+
+let user9 = new User9();
+console.log(user9);
+
+
+//----------------------------------------------------------------------------------------------------------------------
+// lesson #10 -

@@ -199,4 +199,48 @@ var car = new Mersedes();
 console.log(car);
 car.logInfo('Info#1');
 console.log(car.getCarYear());
+//----------------------------------------------------------------------------------------------------------------------
+// lesson #9 - Интерфейсы
+// в интерфейсе перечисляются обязательные и необязательные поля, после этого передаем их как типы
+function getLength(variable) {
+    console.log('getLength:' + ' ' + variable.length);
+}
+getLength([1, 2, 3, 5, 7]);
+var box = {
+    name: 'Joe',
+    // getLength() выдаст значение из box.length
+    // length: 20
+    // getLength() выдаст значение undefined, так как нет поля length у объекта
+    // boxLength: 21
+    // для того что бы избежать этой проблемы в функции указываем, что она должна принимать -> getLength(variable: { length: number })
+    length: 25
+};
+// выдаст значение из box.length
+getLength(box);
+function getLength2(variable) {
+    console.log('getLength:' + ' ' + variable.length);
+}
+var box2 = {
+    name: 'Joe',
+    length: 65,
+};
+getLength(box2);
+// имплементироваться можно сразу от нескольких классов
+// наследоваться только от одного класса
+var User9 = /** @class */ (function () {
+    function User9() {
+        this.name = 'user';
+    }
+    User9.prototype.logInfo = function (info) {
+        console.log(info);
+    };
+    User9.prototype.getYear = function () {
+        return 200;
+    };
+    return User9;
+}());
+var user9 = new User9();
+console.log(user9);
+//----------------------------------------------------------------------------------------------------------------------
+// lesson #10 -
 //# sourceMappingURL=primer.js.map
